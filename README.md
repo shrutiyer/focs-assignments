@@ -2,7 +2,7 @@
 
 This is the base repo for FOCS assignments.
 
-Assignments must be submitted by pushing to GitHub before noon on the day of the class in which they are due to be considered for credit. We will review work from assignments in the next class, so it is not practical to get behind. You are allowed one "free pass" missed submission with no questions asked.
+Assignments must be submitted by pushing to GitHub before noon on the day of the class in which they are due to be considered for credit. We will review work from assignments on that day, so it is not practical to get behind. You are allowed one "free pass" missed submission with no questions asked.
 
 ## Get Started
 
