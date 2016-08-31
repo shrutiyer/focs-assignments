@@ -1,4 +1,4 @@
-# FOVS Assignments
+# FOCS Assignments
 
 This is the base repo for FOCS assignments.
 
