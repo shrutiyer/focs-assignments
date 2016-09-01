@@ -4,12 +4,16 @@
 ;;; Author: Oliver Steele
 ;;; Date: 2016-10-01
 
+;; helper function to do the calculation
 (define (apply-op op arg1 arg2)
   (cond [(eq? op '+) (+ arg1 arg2)]
         [(eq? op '-) (- arg1 arg2)]
         [(eq? op '*) (* arg1 arg2)]
         [(eq? op '/) (/ arg1 arg2)]))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; infix as-you-go calculator
+;; uses a helper function after the first input is read
 (define (calc-as-you-go-helper arg1 input)
   (cond [(null? input) arg1]
         [else
@@ -21,6 +25,11 @@
 (write (calc-as-you-go '(1 + 2))) (newline)
 (write (calc-as-you-go '(1 + 2 * 3))) (newline)
 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Full RPN calculator
+;; uses a helper function after the first input is read
 (define (calc-rpn-helper input stack)
   (cond [(null? input)
          (first stack)]
