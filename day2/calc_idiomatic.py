@@ -1,3 +1,7 @@
+# Course: ENGR3520
+# Author: Oliver Steele
+# Date: 2016-10-01
+
 def apply_op(op, a, b):
     import operator
     ops = {'+': operator.add, '-': operator.sub, '*': operator.mul}
@@ -5,9 +9,16 @@ def apply_op(op, a, b):
 
 def calc_as_you_go(input):
     """
-    >>> calc_as_you_go([1, '+', 2, '*', 3])
+    >>> calc_as_you_go([1, '+', 2])
     3
+    >>> calc_as_you_go([1, '+', 2, '*', 3])
     9
+    >>> calc_as_you_go([3, '-', 1])
+    2
+    >>> calc_as_you_go([2, '*', 3, '+', 4])
+    10
+    >>> calc_as_you_go([4, '+', 2, '*', 3])
+    18
     """
 
     n = input.pop(0)
@@ -15,15 +26,15 @@ def calc_as_you_go(input):
         op = input.pop(0)
         arg = input.pop(0)
         n = apply_op(op, n, arg)
-        print n
+    return n
 
-def rpn_calc(input):
+def calc_rpn(input):
     """
-    >>> eval_rpn([1, 2, '+'])
+    >>> calc_rpn([1, 2, '+'])
     3
-    >>> eval_rpn([2, 3, '+', 4, '*'])
+    >>> calc_rpn([2, 3, '+', 4, '*'])
     20
-    >>> eval_rpn([2, 3, 4, '+', '*'])
+    >>> calc_rpn([2, 3, 4, '+', '*'])
     14
     """
 
