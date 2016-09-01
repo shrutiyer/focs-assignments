@@ -2,11 +2,15 @@
 # Author: Oliver Steele
 # Date: 2016-10-01
 
+# Helper function to actually do the arithmetic
 def apply_op(op, a, b):
     import operator
     ops = {'+': operator.add, '-': operator.sub, '*': operator.mul}
     return ops[op](a, b)
 
+#############################################
+## infix as-you-go calculator
+## uses a helper function after the first input is read
 def calc_as_you_go_helper(arg1, input):
     if input:
         return calc_as_you_go_helper(apply_op(input[0], arg1, input[1]), input[2:])
@@ -29,6 +33,9 @@ def calc_as_you_go(input):
 
     return calc_as_you_go_helper(input[0], input[1:])
 
+#############################################
+## Full RPN calculator
+## uses a helper function after the first input is read
 def calc_rpn_helper(input, stack):
     if not input:
         return stack[0]
