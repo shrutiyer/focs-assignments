@@ -26,6 +26,7 @@
 (display (is-right-triangle 4 5 6)) (newline)  ;; -> #f
 
 ;; 3.  WRITE FACTORIAL:  given n, returns n!
+;;     Hint:  recursion is your friend
 (define (fact n)
   your-code-here)
 
@@ -33,6 +34,7 @@
 (display (fact 2)) (newline) ;; -> 1
 
 ;; 4.  WRITE FIBONACCI:  given n, returns the nth fibonacci number as shown below
+;;     Hint:  don't run this on really big numbers!
 (define (fib n)
    your-code-here)
 
@@ -44,6 +46,7 @@
 (display (fib 6)) (newline) ;; -> 8
 
 ;; 5.  WRITE a procedure that takes a list of numbers and returns the sum of those numbers
+;;     Hint:  first, rest, cons
 (define (sum lst)
   your-code-here)
 
