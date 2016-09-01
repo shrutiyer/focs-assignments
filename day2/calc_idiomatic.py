@@ -2,11 +2,13 @@
 # Author: Oliver Steele
 # Date: 2016-10-01
 
+# Helper function to actually do the arithmetic
 def apply_op(op, a, b):
     import operator
     ops = {'+': operator.add, '-': operator.sub, '*': operator.mul}
     return ops[op](a, b)
 
+# AS-YOU-GO Calculation (finite registers)
 def calc_as_you_go(input):
     """
     >>> calc_as_you_go([1, '+', 2])
@@ -28,6 +30,8 @@ def calc_as_you_go(input):
         n = apply_op(op, n, arg)
     return n
 
+
+# FULL RPN Calculator (uses stack)
 def calc_rpn(input):
     """
     >>> calc_rpn([1, 2, '+'])
@@ -49,6 +53,8 @@ def calc_rpn(input):
             stack.append(x)
     return stack[0]
 
+
+# FULL TREE-WALKING INFIX CALCULATOR
 def eval_tree(tree_or_number):
     """
     >>> eval_tree([2, '*', [3, '+', 4]])
@@ -56,8 +62,9 @@ def eval_tree(tree_or_number):
     """
     if isinstance(tree_or_number, list):
         left_expr, op, right_expr = tree_or_number
+        # recursively evaluate left and right children
         left, right = eval_tree(left_expr), eval_tree(right_expr)
-        if op == '+':
+        if op == '+':                   # NOTE:  could use apply-op here
             return left + right
         elif op == '-':
             return left - right
