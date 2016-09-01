@@ -2,15 +2,15 @@
 # Author: Oliver Steele
 # Date: 2016-10-01
 
-# Helper function to actually do the arithmetic
 def apply_op(op, a, b):
+    """Helper function to actually do the arithmetic"""
     import operator
     ops = {'+': operator.add, '-': operator.sub, '*': operator.mul}
     return ops[op](a, b)
 
-# AS-YOU-GO Calculation (finite registers)
-def calc_as_you_go(input):
-    """
+def calc_as_you_go(tokens):
+    """As-you-go calculation (finite registers)
+
     >>> calc_as_you_go([1, '+', 2])
     3
     >>> calc_as_you_go([1, '+', 2, '*', 3])
@@ -23,17 +23,16 @@ def calc_as_you_go(input):
     18
     """
 
-    n = input.pop(0)
-    while input:
-        op = input.pop(0)
-        arg = input.pop(0)
+    n = tokens.pop(0)
+    while tokens:
+        op = tokens.pop(0)
+        arg = tokens.pop(0)
         n = apply_op(op, n, arg)
     return n
 
 
-# FULL RPN Calculator (uses stack)
-def calc_rpn(input):
-    """
+def calc_rpn(tokens):
+    """Full RPN Calculator (uses a stack)
     >>> calc_rpn([1, 2, '+'])
     3
     >>> calc_rpn([2, 3, '+', 4, '*'])
@@ -43,7 +42,7 @@ def calc_rpn(input):
     """
 
     stack = []
-    for x in input:
+    for x in tokens:
         if isinstance(x, str):
             arg2 = stack.pop()
             arg1 = stack.pop()
@@ -54,14 +53,14 @@ def calc_rpn(input):
     return stack[0]
 
 
-# FULL TREE-WALKING INFIX CALCULATOR
-def eval_tree(tree_or_number):
-    """
+def eval_tree(expr):
+    """Full tree-walking infix calculator.
+
     >>> eval_tree([2, '*', [3, '+', 4]])
     14
     """
-    if isinstance(tree_or_number, list):
-        left_expr, op, right_expr = tree_or_number
+    if isinstance(expr, list):
+        left_expr, op, right_expr = expr
         # recursively evaluate left and right children
         left, right = eval_tree(left_expr), eval_tree(right_expr)
         if op == '+':                   # NOTE:  could use apply-op here
@@ -73,24 +72,26 @@ def eval_tree(tree_or_number):
         elif op == '/':
             return left / right
     else:
-        return tree_or_number
+        return expr
 
-def parse_parens(input):
+def parse_parens(tokens):
+    """Parse a list of tokens, with parentheses, into a tree, represented as a list of lists."""
     tree = []
-    while input:
-        token = input.pop(0)
+    while tokens:
+        token = tokens.pop(0)
         if token == '(':
-            tree.append(parse_parens(input))
+            tree.append(parse_parens(tokens))
         elif token == ')':
             return tree
         else:
             tree.append(token)
     return tree
 
-def eval_parens(input):
-    """
+def eval_parens(tokens):
+    """Evaluate an expression represented as a list of tokens, with parentheses.
+
     >>> eval_parens([2, '*', '(', 3, '+', 4, ')'])
     14
     """
 
-    return eval_tree(parse_parens(input))
+    return eval_tree(parse_parens(tokens))
