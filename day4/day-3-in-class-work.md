@@ -13,7 +13,7 @@ Hint:  The tail-recursive version will use a helper function.
 
 	(filter even? '(1 2 3 4 5 6))  --> '(2 4 6)  ;; using the built-in even?
 	(filter teen? '(21 17 2 13 4 42 2 16 3)) --> '(17 13 16)
-	                        ;; assuming (define (teen x) (and (<= 13 x) (<= x 19)))))
+	                        ;; assuming (define (teen? x) (and (<= 13 x) (<= x 19)))))
 	(filter list? '(3 (3 2 1) symbol (4 2) (1 (2) 3)) --> '((3 2 1) (4 2) (1 (2) 3))
 
 Implement it anyway.  Implement `my-filter` that behaves the same as the built-in `filter`.
@@ -55,8 +55,8 @@ as well as for the new list.  Confirm with a member of the instructional staff.â
 
 `zip` takes two lists, and returns a list of elements of size two, until one of the lists runs out.
 
-	(flatzip '(1 2 3) '(4 5 6)) ;; --> '((1 4) (2 5) (3 6))
-	(flatzip '(1 2 3) '(a b c d e f g)) ;; --> '((1 a) (2 b) (3 c))
+	(zip '(1 2 3) '(4 5 6)) ;; --> '((1 4) (2 5) (3 6))
+	(zip '(1 2 3) '(a b c d e f g)) ;; --> '((1 a) (2 b) (3 c))
 
 Implement `zip`.
 
