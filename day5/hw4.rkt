@@ -51,6 +51,11 @@
     [(equal? (first exp) 'LAMBDA)
      (list 'lambda (second exp) (third exp) env)]
 
+    [(assq (first exp) operator-list)
+      (apply
+        (second (assq (first exp) env))
+        (map (lambda (x) (evaluate x env)) (rest exp)))]
+    
     [(list? exp)
      (
       (second (assq (first exp) env)) 
