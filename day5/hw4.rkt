@@ -7,7 +7,6 @@
 ;;; [X] I completed this assignment with assistance from Anne Loverso
 ;;;     and/or using these external resources: ___
 ;;; I could only successfully finish the first three parts. I couldn't get LAMBDA to evaluate.
-;;; I spent ~4 hrs just on the Lambda problem. Couldn't get it to work.
 
 (define operator-list
   (list (list 'ADD +)
