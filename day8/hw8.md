@@ -1,5 +1,17 @@
 # FOCS Homework for Day 9
 
+You may edit your answers into this file, or add a separate file in the same directory.
+
+If you add a separate file, please include the following at the top:
+
+```
+Student Name: Frankly Olin [change to your name]
+Check one:
+[ ] I completed this assignment without assistance or external resources.
+[ ] I completed this assignment with assistance from ___
+   and/or using these external resources: ___
+```
+
 ## 1. For each of the following languages, decide whether it is regular
 
 For each of the following languages, decide whether it is regular.  If it is regular, give a regular expression or finite automaton that recognizes the language.  If it is not regular, demonstrate that using the pumping lemma.
