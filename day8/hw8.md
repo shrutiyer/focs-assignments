@@ -36,7 +36,7 @@ b) All strings with an equal number of occurrences of the substrings `01` and `1
 
 **Ans:**	Regular language
 
-Regex is (0[01]*0)|(1[01]*1)
+Regex is (0[01]\*0)|(1[01]\*1)
 
 If the string starts and ends with the same digit, there is a 01 to balance the other 10. If we are repeating any substring, there are two cases. Case 1: substring starts and ends with the same digit. Then, we know that there is a 01 matching the other 10. 
 
