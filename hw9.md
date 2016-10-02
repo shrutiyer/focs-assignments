@@ -65,9 +65,9 @@ d) Give two distinct grammars that produce the strings described by the regular 
 
 ```S→abS | ε```
 
-```S→XY | ε
-   X→Xab | ε
-   Y→abY | ε```
+    S→XY | ε
+    X→Xab | ε
+    Y→abY | ε
 
 ## 4. Ambiguous Grammars
 
@@ -89,7 +89,15 @@ a. parse trees
 
 b. leftmost derivations (These are the ones that, starting from the start variable, rewrite the leftmost nonterminal first.)
 
+```S → aS → aaSbS → aaεbS → aaεbε → aab```
+
+```S → aSbS → aaSbS → aaεbS → aaεbε → aab```
+
 c. rightmost derivations (These are the ones that, starting from the start variable, rewrite the rightmost nonterminal first.)
+
+```S → aS → aaSbS → aaSbε → aaεbε → aab```
+
+```S → aSbS → aaSbS → aaSbε → aaεbε → aab```
 
 Extra Credit/Challenge: Prove that this grammar generates all and only the strings of `a`s and `b`s such that every prefix has at least as many `a`s as `b`s. **Hint: Do the readings!**
 
