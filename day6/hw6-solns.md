@@ -87,13 +87,15 @@ The DFA's accept states are those that correspond to a set of NFA states that in
 
 ![](hw6-solns-2.png)
 
-This concludes the NFA to DFA conversion algorithm. We can use reasoning to simplify this. (There is also a DFA minimization algorithm that will do the same thing.)
+This concludes the NFA to DFA conversion algorithm. We can use reasoning[^1] to simplify this DFA:
 
-r5, r6, r7, and r8 are all accept states, and all their transitions are to each other. (Careful! If there's an undrawn trap state, you can't tell this by looking only at the arrows. You need to verify that each state's outgoing arrows' labels cover the alphabet.) This means that once you get into an accept state, you stay in an accept state – and it therefore doesn't matter which one.
+r5, r6, r7, and r8 are all accept states, and all their transitions are to each other. (Careful! If there's an undrawn trap state, you can't tell this by looking only at the arrows. You need to verify that each state's outgoing arrows' labels cover the alphabet.) This means that once the automaton enters an accept state, it stays in an accept state. It therefore doesn't matter which of these accept states it's in; they might as well all be the same state.
 
-Combining all the accept states yields:
+Combining all the accept states r5, r6, r7, r8 into a single accept state r9 yields:
 
 ![](hw6-solns-2b.png)
+
+[^1]: There is also a DFA minimization algorithm that will do the same thing.
 
 ### 3. Larger alphabet
 
