@@ -122,7 +122,7 @@ Any two of:
 *G7*:
 
 	S -> AU | ε
-	T -> AU | ε
+	T -> AU
 	U -> BT
 	A -> a
 	B -> b
