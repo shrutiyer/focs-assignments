@@ -143,7 +143,7 @@ This solution applies the conversion to the abbreviated representation of the gr
 
 Note that if we were being smart, instead of following the general algorithm to normalize a grammar, we could have chosen to apply (4a) to `T -> T x T` *before* removing unit rules; or we could have combined `E2` with `T1` and `E3` with `T2`.
 
-The procedure in Sipser 2.9 is guaranteed to *always* produce an equivalent Chomsky normal form grammar. It is not in the general case do so in the shortest number of steps, nor does it in general produce the smallest grammar.
+The procedure in Sipser 2.9 is guaranteed to *always* produce an equivalent Chomsky normal form grammar. It does not in the general case do so in the *shortest number of steps*, nor does it in general produce the *smallest grammar*.
 
 ### 4.
 
@@ -166,9 +166,15 @@ L contains these strings:
 
 and in general all strings `(`'s followed by an `a` followed by `)`s where the number of `(`s is equal to the number of `)`s.
 
-Lemma #1: L contains no strings with an unequal number of `(`s and `)`s. (To do #1: prove this using induction.)
+Lemma #1: L contains no strings with an unequal number of `(`s and `)`s.
 
-Lemma #2: L contains no strings with more than one `a`, but without `+` or `x`. (To do #2: prove this using induction.)
+Proof intuition: only `T -> (E)` derives a `(` or `)`, and it derives an equal number of `(` and `)`.
+
+Proof sketch: let P(n) be the claim that all strings derived with n or fewer derivation steps contain an equal number of `(` and `)`. **Basis**: S contains an equal number (0) of `(` and `)`; therefore P(0). **Inductive step**: if S derives w in n steps, P(n) states that w contains c `(`s = c `)`s. The substitution `T -> (E)` derives a string w' with c+1 `(`s = c + 1 `)`s. The other substitions derive a string w' with c `(`s = c `(s`. In each case, w' contains the same number of `(`s and `)`s. Therefore P(n) entails P(n + 1).
+
+Lemma #2: L contains no strings with more than one `a`, but without `+` or `x`.
+
+Proof sketch: Similar to lemma #1.
 
 For any number _p_ we can choose a string _w_ with length greater than _p_: choose _p_ `(`s followed by `a` followed by p `)`s.
 
