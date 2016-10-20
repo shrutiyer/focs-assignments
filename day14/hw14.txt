@@ -58,7 +58,7 @@ Assume that you have n elements stored in an array and the same n elements store
       Array: 1 unit [At the end]; List: 1 unit [At the beginning];
       
   D. Delete the fifth element from the array?  From the list?
-      Array: 1 unit; List: 5 units;
+      Array: 5 unit; List: 5 units;
       
   E. Confirm that a particular element -- say x -- is present in the array?  In the list?
       Array: n units; List: n units;
@@ -74,8 +74,8 @@ G. How much would it cost now to add an element to the end of the array?  To add
     Array: 1 unit; List: 1 unit;
 
 H. How much would it cost now to delete an element from the array?  From the list?  What if it were the final element?  The penultimate element?
-      Suppose the index of the element to be deleted is a
-      Array: 1 unit (For any element); List: min(a, n-a)units (For any element);
+      Suppose the index of the element to be deleted is 'a'
+      Array: a units (For any element); List: min(a, n-a)units (For any element);
 
 Finally, assume that both the array and the linked list are sorted, i.e., that their elements are in some predictable order (say, comparable by < or <=).
   J. How much would it cost to confirm that a particular element -- say x -- is present in the array?  In the list?  
