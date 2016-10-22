@@ -6,10 +6,10 @@ You may edit your answers into this file, or add a separate file in the same dir
 If you add a separate file, please include the following at the top:
 
 ```
-Student Name: Frankly Olin [change to your name]
+Student Name: Shruti Iyer
 Check one:
 [ ] I completed this assignment without assistance or external resources.
-[X] I completed this assignment with assistance from David, Annabel, Nur (We worked on the hw together)
+[X] I completed this assignment with assistance from Annabel, Nur (We worked on the hw together)
    and/or using these external resources: ___
 ```
 
