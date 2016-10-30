@@ -8,7 +8,7 @@ Date   : 2016-10-27
 License: MIT License
 """
 
-from queue import Queue
+from Queue import Queue
 
 
 class Graph(object):
@@ -42,9 +42,13 @@ class Node(object):
 
     def __init__(self, label):
         self.label = label
+        self.parent = None
 
     def __repr__(self):
-        return self.label
+        if (self.parent):
+            return 'Child: %s; Parent: %s' % (self.label, self.parent.label)
+        else:
+            return 'Root: %s' % (self.label)
 
 
 def bfs(graph, start):
@@ -55,6 +59,7 @@ def bfs(graph, start):
         print(node)
         visited.add(node)
         for tail in graph.successors(node):
+            tail.parent = node
             if tail not in visited:
                 remaining_nodes.put(tail)
 
