@@ -43,10 +43,11 @@ class Node(object):
     def __init__(self, label):
         self.label = label
         self.parent = None
+        self.distance = 0
 
     def __repr__(self):
         if (self.parent):
-            return 'Child: %s; Parent: %s' % (self.label, self.parent.label)
+            return 'Child: %s; Parent: %s; Distance: %s' % (self.label, self.parent.label, self.distance)
         else:
             return 'Root: %s' % (self.label)
 
@@ -60,6 +61,7 @@ def bfs(graph, start):
         visited.add(node)
         for tail in graph.successors(node):
             tail.parent = node
+            tail.distance = node.distance + 1
             if tail not in visited:
                 remaining_nodes.put(tail)
 
