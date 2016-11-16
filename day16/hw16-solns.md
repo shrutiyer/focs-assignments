@@ -1,9 +1,5 @@
 # FOCS Homework 16
 
-You may edit your answers into this file, or add a separate file in the same directory.
-
-If you add a separate file, please include the following at the top:
-
 ```
 Student Name: Solution Set
 Check one:
