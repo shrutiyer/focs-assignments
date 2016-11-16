@@ -222,4 +222,4 @@ print(create_distance_map(g, g.nodes[0]))
 
 ## 3. Single-Source Distance With Weights
 
-![](./images/dijkstra.svg)
+![](./images/dijkstra.png)

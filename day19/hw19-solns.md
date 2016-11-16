@@ -130,7 +130,7 @@ a. Draw a recursion graph of `max_subarray([−2, 1, −3, 4, −1, 2, 1, −5, 
 
 Here's a call graph that includes `max`.
 
-![](./images/max_subarray.svg)
+![](./images/max_subarray.png)
 
 It makes calls to (in order): max(0, -2), max(0, 0), max(0, 1), **max(0, 1)**, **max(0, -2)**, max(1, 0), max(0, 4), max(1, 4), max(0, 3), max(4, 3), max(0, 5), max(4, 5), max(0, 6), max(5, 6), **max(0, 1)**, max(6, 1), **max(0, 5)**, max(6, 5). The bold calls items are calls that duplicate the arguments of a prior call.
 
@@ -162,6 +162,6 @@ The only point for memoization is `max`. This yields a minor improvement to the 
 
  Since `max_subarray` is already a (bottom-up) dynamic program, adding (top-down) dynamism doesn't buy much:
 
-![](./images/memoized_max_subarray.svg)
+![](./images/memoized_max_subarray.png)
 
 e. [Optional challenge] Produce working code for memoized `max_subarray`.
