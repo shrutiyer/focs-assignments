@@ -91,29 +91,34 @@ Prove:
 1.  ∃x. sum( x, x, s(s(0)) )
 
     ```
-    1. ∀x. sum( x, 0, x )		axiom 1
-    2. sum( s(0), 0, s(0) )		1, universal instantiation x = s(0)
+    1. ∀x. sum( x, 0, x )				axiom 1
+    2. sum( s(0), 0, s(0) )				1, universal instantiation x = s(0)
     3. ∀x, y, z. sum( x, y, z ) → sum( x, s(y), s(z) )		axiom 2
     4. sum( s(0), 0, s(0) ) → sum( s(0), s(0), s(s(0)) )	3, universal instantiation with x = z = s(0), y = 0
     5. sum( s(0), s(0), s(s(0)) )		2, 4, modus ponens
-    6. ∃x. sum( x, x, s(s(0)) )	5, existential introduction with x = s(0)
+    6. ∃x. sum( x, x, s(s(0)) )			5, existential generalization with x = s(0)
     ```
 
 2.  ∀x. sum( 0, x, x ) [hint:  induction]
 
      ```
-    1. ∀x. sum( x, 0, x )		axiom 1
-    2. sum( 0, 0, 0 )			1, universal instantation with x = 0
+    1. ∀x. sum( x, 0, x )				axiom 1
+    2. sum( 0, 0, 0 )					1, universal instantation with x = 0
     3. ∀x, y, z. sum( x, y, z ) → sum( x, s(y), s(z) )		axiom 2
-    4. sum( 0, n, n ) → sum( 0, s(n), s(n) )		3, universal instantiation with x = 0, y = z = k
-    5. ∀x. sum( 0, x, x )		1 (base case), 4 (inductive step), induction
+    4. sum( 0, n, n ) → sum( 0, s(n), s(n) )				3, universal instantiation with x = 0, y = z = k
+    5. ∀x. sum( 0, x, x )				1 (base case), 4 (inductive step), induction
      ```
 
 
 3. [optional super-challenge] ∀x, y, z. sum( x, y, z ) → sum( y, x, z )
+   Proof sketch:
+
+   1. Prove ∀x, z. sum( x, S(0), z ) → sum( S(0), x, z )
+   2. Prove ∀x, y, z. (sum( x, y, z ) → sum( y, x, z )) → (sum( x, S(y), z ) → sum( S(y), x, z ))
+   3. Induction on 1, 2.
 
     ```
-   1.
+   TBD
     ```
 
 
