@@ -203,7 +203,11 @@ binary_search_array(3, [1, 3, 4, 6, 7, 8, 10, 13, 14])
 
 This isn't a practical implementation because the array slice operation takes time proportional to the size of the slice. This is why the original implementation passes the ends of slice, instead of reifying it.
 
-† [Under construction] 
+† If `memoized_binary_search_array` on a cache hit is only constant time if the time to compute the hash of an array is constant. In general, the time to compute an array hash is proportional to its size, so  `memoized_binary_search_array` introduces a factor of O(n). Since it recurses an average $\log_2 n$ times, this increases the total time form $O(\log_2 n)$ to $O(n \log_2 n)$ (or, from $O(\log n)$ to $O(n \log n)$, since $\log n$ and $log_2 n$ differ by a constant factor.)
+
+If the array arguments to the first and second call have the same *identity*, and just *values*, there are a couple of ways around this.
 
 f. [Optional challenge] Find the bug in `binary_search_array`. What input will cause it to fail? How can this be fixed? (Hint: it is a bug that appears for small arrays. Python is not susceptible to [this bug](https://research.googleblog.com/2006/06/extra-extra-read-all-about-it-nearly.html).)
+
+`binary_search_array(3, [1])` will fail with infinite recursion. When left = 0, right = 1, then middle ← int((left + right) / 2) = 1, and the function will call itself with the same arguments. A fix is test whether right - left > 1 before recursing.
 
