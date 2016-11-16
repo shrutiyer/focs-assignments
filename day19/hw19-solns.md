@@ -101,13 +101,13 @@ Prove:
 
 2.  ∀x. sum( 0, x, x ) [hint:  induction]
 
-     ```
+       ```
     1. ∀x. sum( x, 0, x )				axiom 1
     2. sum( 0, 0, 0 )					1, universal instantation with x = 0
     3. ∀x, y, z. sum( x, y, z ) → sum( x, s(y), s(z) )		axiom 2
     4. sum( 0, n, n ) → sum( 0, s(n), s(n) )				3, universal instantiation with x = 0, y = z = k
     5. ∀x. sum( 0, x, x )				1 (base case), 4 (inductive step), induction
-     ```
+       ```
 
 
 3. [optional super-challenge] ∀x, y, z. sum( x, y, z ) → sum( y, x, z )
@@ -165,3 +165,45 @@ The only point for memoization is `max`. This yields a minor improvement to the 
 ![](./images/memoized_max_subarray.png)
 
 e. [Optional challenge] Produce working code for memoized `max_subarray`.
+
+## 4. Binary Search
+
+b. Is `binary_search_array` an example of divide and conquer? 
+
+Yes. The problem is subdivided into smaller problems; the solutions to the smaller problems are combined to create a solution to the entry problem. This relates to the fact that `binary_search_array_helper` is recursive and (except for the base case) calls itself twice.
+
+c. Is `binary_search_array` an example of dynamic programming?
+
+No. The subproblems don't overlap?
+
+e. Under what circumstances does the `memoized_binary_search_array` present any benefits over the unmemoized original? How does this relate to (i) its recursion graph; (ii) the key attributes of a dynamic program?
+
+A single call to `memoized_binary_search_array` presents no advantage over the unmemoized `binary_search_array`, because neither it nor `binary_search_array_helper` is called twice with the same arguments. This relates to the fact that the problem contains no overlapping subproblems.
+
+If `memoized_binary_search_array` is invoked a second time with the same array argument and search element, the second call will execute in constant time. (But maybe not really! See below†.)
+
+How about if two arrays share substructure: for example, `binary_search_array(3, [1, 3, 4, 6, 7, 8, 10, 13, 14])` and `binary_search_array(3, [1, 3, 4, 6, 7, 8, 20, 30, 44])`, where the beginnings of the array (where the search element is located) are unchanged? The function as implemented will see no benefit, because `binary_search_array_helper` is applied to the *original* array, not the slice. An alternate implentation that sliced the array each time could benefit from memoization:
+
+```python
+def binary_search_array_helper(x, xs, offset):
+    if not xs: return None
+    middle = int(len(xs) / 2)
+    if x < xs[middle]:
+        return binary_search_array_helper(x, xs[:middle], offset)
+    elif xs[middle] < x:
+        return binary_search_array_helper(x, xs[middle:], offset + middle)
+    else:
+        return middle
+
+def binary_search_array(x, xs):
+    return binary_search_array_helper(x, xs, 0)
+
+binary_search_array(3, [1, 3, 4, 6, 7, 8, 10, 13, 14])
+```
+
+This isn't a practical implementation because the array slice operation takes time proportional to the size of the slice. This is why the original implementation passes the ends of slice, instead of reifying it.
+
+† [Under construction] 
+
+f. [Optional challenge] Find the bug in `binary_search_array`. What input will cause it to fail? How can this be fixed? (Hint: it is a bug that appears for small arrays. Python is not susceptible to [this bug](https://research.googleblog.com/2006/06/extra-extra-read-all-about-it-nearly.html).)
+
