@@ -12,7 +12,7 @@ Check one:
 
 ### 1. Match the diagrams to the graph structures.
 
-![](images/graphs.svg)
+![](images/graphs.png)
 
 (i) *G* = ({1, 2, 3, 4}, {{1, 2}, {1, 4}, {3, 4}})
 
@@ -32,7 +32,7 @@ Check one:
 
 (iv) – (c)
 
-(![](images/1–soln.svg))
+(![](images/1–soln.png))
 
 ### 2. Cycles
 
@@ -56,11 +56,11 @@ Which of (1a-d) contains a cycle? For those graphs that contain a cycle, what is
 
 **Solution**:
 
-![](images/3–soln.svg)
+![](images/3–soln.png)
 
 ### 4. Write the graph (V, E) for this diagram.
 
-![](images/graph.svg)
+![](images/graph.png)
 
 This is a single graph. It is not a **connected graph**.
 
@@ -72,7 +72,7 @@ This is a single graph. It is not a **connected graph**.
 
 ### 5. Match the diagrams to the graphs.
 
-![](images/digraphs.svg)
+![](images/digraphs.png)
 
 (i) *G* = ({1, 2, 3, 4}, {(1, 2), (1, 4), (3, 2), (3, 4)})
 
@@ -88,7 +88,7 @@ This is a single graph. It is not a **connected graph**.
 
 (iii) –(b)
 
-(![](images/5–soln.svg))
+(![](images/5–soln.png))
 
 ### 6. Directed acyclic graphs
 
@@ -106,13 +106,13 @@ Which of (5a-c) are DAGs?
 
 **Solution**
 
-![](images/7–soln.svg)
+![](images/7–soln.png)
 
 This graph is a DAG.
 
 ### 6. Write the graph (V, A) for this diagram.
 
-![](images/digraph.svg)
+![](images/digraph.png)
 
 **Solution**
 
