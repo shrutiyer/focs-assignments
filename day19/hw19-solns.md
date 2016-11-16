@@ -124,4 +124,44 @@ Prove:
 
 ## 3. Maximum Subarray
 
-[in progress]
+a. Draw a recursion graph of `max_subarray([−2, 1, −3, 4, −1, 2, 1, −5, 4])`.
+
+`max_subarray` doesn't call itself, so a straight recursion graph (one node) is uninteresting.
+
+Here's a call graph that includes `max`.
+
+![](./images/max_subarray.svg)
+
+It makes calls to (in order): max(0, -2), max(0, 0), max(0, 1), **max(0, 1)**, **max(0, -2)**, max(1, 0), max(0, 4), max(1, 4), max(0, 3), max(4, 3), max(0, 5), max(4, 5), max(0, 6), max(5, 6), **max(0, 1)**, max(6, 1), **max(0, 5)**, max(6, 5). The bold calls items are calls that duplicate the arguments of a prior call.
+
+b. Is `max_subarray` an example of divide and conquer? Why or why not?
+
+No. D&C divides a problem into smaller similar problems. `max_subarray ` doesn't do this.
+
+c. Is `max_subarray` an example of dynamic programming? Why or why not?
+
+Arguably. [I thought yes when I wrote the question. There's [legitimate debate](http://stackoverflow.com/questions/16323792/dynamic-programming-aspect-in-kadanes-algorithm). The exam won't include anything this tricky or ambiguous.]
+
+ The function updates values as it iterates over the input data. It uses the same technique in the final definition of `fib` in the **Bottom-Up Dynamic Programming** section of the [Dynamic Programming and the Fibonacci Function](https://github.com/focs16fall/focs-assignments/blob/master/day17/memoization_notes.ipynb) notebook, where the fact that only the last value from the table is required, is used to collapse the table into a single scalar that represents its last entry.
+
+Here's an implementation that undoes this optimization, to make the tabular form of the algorithm clearer. Compare this to the original.
+
+```python
+def max_subarray(xs):
+    max_so_far = [0] * len(xs)
+    max_ending_here = [0] * len(xs)
+    for i in range(1, len(xs)):
+        max_ending_here[i] = max(0, max_ending_here[i - 1] + xs[i])
+        max_so_far[i] = max(max_so_far[i - 1], max_ending_here[i - 1])
+    return max_so_far[-1]
+```
+
+d. Draw the recursion graph for `memoized_max_subarray([−2, 1, −3, 4, −1, 2, 1, −5, 4])`.
+
+The only point for memoization is `max`. This yields a minor improvement to the number of calls to max; since max is cheap, this isn't a clear win.
+
+ Since `max_subarray` is already a (bottom-up) dynamic program, adding (top-down) dynamism doesn't buy much:
+
+![](./images/memoized_max_subarray.svg)
+
+e. [Optional challenge] Produce working code for memoized `max_subarray`.
