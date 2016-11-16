@@ -64,7 +64,7 @@ c. (Optional) (Because we love graphs) Draw Table 1 as a digraph. What claims do
 
 The following graph represents likes(x, y) with an arrow x → y.
 
-![](./images/likes.svg)
+![](./images/likes.png)
 
 1. ∀x. loves(x, y).
    y has an indegree equal to the number of nodes in the graph. In this model, y has an indegree of 4. (There are four nodes, and ∀x quantifies over all of them.) This is true only for c.
