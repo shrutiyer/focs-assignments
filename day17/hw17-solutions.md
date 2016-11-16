@@ -73,6 +73,18 @@ create_spanning_tree(g, g.nodes[0])
 print_spanning_tree(g)
 ```
 
+    a
+    b
+    c
+    d
+    e
+    a
+      b
+        d
+        e
+      c
+
+
 2\. Second strategy: construct a new graph.
 
 
@@ -115,6 +127,17 @@ def print_graph(graph):
 print_graph(create_spanning_tree(g, g.nodes[0]))
 ```
 
+    a
+    b
+    c
+    d
+    e
+    b -> d
+    b -> e
+    a -> b
+    a -> c
+
+
 ## 2. Single-Source Distance (without weights)
 Modify bfs so that it records the distance (number of edges) from the start node to each node that a path can reach.
 
@@ -152,6 +175,13 @@ for n in g.nodes:
     print(n, n.distance)
 ```
 
+    a 0
+    b 1
+    c 1
+    d 2
+    e 2
+
+
 2\. Second strategy: Return a structure that maps nodes to distances
 
 
@@ -187,5 +217,9 @@ def create_distance_map(graph, start):
 print(create_distance_map(g, g.nodes[0]))
 ```
 
-    {'a': 0, 'e': 2, 'b': 1, 'd': 2, 'c': 1}
+    {'a': 0, 'e': 2, 'c': 1, 'd': 2, 'b': 1}
 
+
+## 3. Single-Source Distance With Weights
+
+![](./images/dijkstra.svg)
